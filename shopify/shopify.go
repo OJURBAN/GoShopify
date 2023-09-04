@@ -242,13 +242,15 @@ func (inst Instance) initCheckout() (bool, error) {
 		"Content-Type":    {"application/x-www-form-urlencoded"},
 	}
 
-	data := map[string]interface{}{}
-
 	resp, err := inst.Session.PostJson(
 		fmt.Sprintf("https://%s/checkout", inst.Domain),
 		headers,
-		data,
+		nil,
 	)
+	//resp, err := inst.Session.Get(
+	//	"https://httpbin.org/cookies",
+	//	headers,
+	//)
 	if err != nil {
 		inst.Logger.Error("POST CART", zap.Error(err))
 	}

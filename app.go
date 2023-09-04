@@ -5,6 +5,7 @@ import (
 	"alin/packages/shopify"
 	"context"
 	"fmt"
+	"net/http/httputil"
 )
 
 // App struct
@@ -18,12 +19,12 @@ func NewApp() *App {
 }
 
 func main() {
-	//newS := session.NewSession()
-	//resp, err := newS.Get("https://httpbin.org/get", map[string][]string{})
-	//if err != nil {
-	//}
-	//respDump, err := httputil.DumpResponse(resp, true)
-	//fmt.Printf("[GET] Resp: %s", respDump)
+	newS := session.NewSession()
+	resp, err := newS.Get("https://api.ipify.org?format=json", map[string][]string{})
+	if err != nil {
+	}
+	respDump, err := httputil.DumpResponse(resp, true)
+	fmt.Printf("[GET] Resp: %s", respDump)
 	//
 	//data := map[string]interface{}{
 	//	"quantity": 1,
