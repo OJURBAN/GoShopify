@@ -1,0 +1,52 @@
+{
+  "id": 40072422293581,
+  "properties": null,
+  "quantity": 1,
+  "variant_id": 40072422293581,
+  "key": "40072422293581:92375f646737d5f9a13653aabc6d046c",
+  "title": "Route One Super Baggy Denim Shorts - Gingerbread - 30",
+  "price": 4995,
+  "original_price": 4995,
+  "discounted_price": 4995,
+  "line_price": 4995,
+  "original_line_price": 4995,
+  "total_discount": 0,
+  "discounts": [],
+  "sku": "8573685",
+  "grams": 200,
+  "vendor": "Route One",
+  "taxable": true,
+  "product_id": 6860040273997,
+  "product_has_only_default_variant": false,
+  "gift_card": false,
+  "final_price": 4995,
+  "final_line_price": 4995,
+  "url": "\/products\/route-one-super-baggy-denim-shorts-gingerbread-001155634?variant=40072422293581",
+  "featured_image": {
+    "aspect_ratio": 0.781,
+    "alt": "Route One Super Baggy Denim Shorts - Gingerbread",
+    "height": 1280,
+    "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0274\/4293\/7933\/files\/0006_RouteOneSuperBaggyDenimShorts-Gingerbread_1.jpg?v=1692699593",
+    "width": 1000
+  },
+  "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0274\/4293\/7933\/files\/0006_RouteOneSuperBaggyDenimShorts-Gingerbread_1.jpg?v=1692699593",
+  "handle": "route-one-super-baggy-denim-shorts-gingerbread-001155634",
+  "requires_shipping": true,
+  "product_type": "Shorts",
+  "product_title": "Route One Super Baggy Denim Shorts - Gingerbread",
+  "untranslated_product_title": "Route One Super Baggy Denim Shorts - Gingerbread",
+  "product_description": "Introducing the new Route One Super Baggy Denim Shorts in Gingerbread. The shorts are made from a heavy-duty 13oz 100% cotton fabric, and come in an oversized baggy fit. They feature a coin and back pocket embroidery detail, designed here at the Route One HO!\nWe’re proud to announce that Route One has joined 1% for the Planet, a global network of businesses, individuals and non-profits, committed to environmental giving. Every time you choose an item designed by our team here at Route One, we will donate 1% of the value to an approved Environmental Charity, working hard to make the world a better, safer, and healthier place for all.Click here to read more.",
+  "variant_title": "30",
+  "untranslated_variant_title": "30",
+  "variant_options": [
+    "30"
+  ],
+  "options_with_values": [
+    {
+      "name": "Size",
+      "value": "30"
+    }
+  ],
+  "line_level_discount_allocations": [],
+  "line_level_total_discount": 0
+}
