@@ -1,9 +1,11 @@
 package session
 
 import (
+	"alin/packages/shopify/data_handling"
 	"bytes"
 	"encoding/json"
 	"fmt"
+	browser "github.com/EDDYCJY/fake-useragent"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -11,7 +13,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/corpix/uarand"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -19,6 +20,7 @@ import (
 type Session struct {
 	Client    *http.Client
 	Useragent string
+	Transport *http.Transport
 	logger    *zap.Logger
 }
 
@@ -65,9 +67,9 @@ func NewLogger() *zap.Logger {
 // dc.smartproxy.com:10002:user-OskarU-country-gb:xjChiur25bwLFEm0q3
 // dc.smartproxy.com:10003:user-OskarU-country-gb:xjChiur25bwLFEm0q3
 // Constructor
-func NewSession() *Session {
+func NewSession(options data_handling.Options) *Session {
 	sess := new(Session)
-	sess.Useragent = uarand.GetRandom()
+	sess.Useragent = browser.Chrome()
 	sess.logger = NewLogger()
 
 	// Setup transport
@@ -76,13 +78,16 @@ func NewSession() *Session {
 	t.MaxConnsPerHost = 100
 	t.MaxIdleConnsPerHost = 100
 
-	//// Setup proxy
-	//proxy := http.ProxyURL(&url.URL{
-	//	Scheme: "https",
-	//	User:   url.UserPassword("user-OskarU-country-gb", "xjChiur25bwLFEm0q3"),
-	//	Host:   "dc.smartproxy.com:10001",
-	//})
-	//t.Proxy = proxy
+	if options.UseProxy {
+		// Setup proxy
+		proxy := http.ProxyURL(&url.URL{
+			Scheme: options.Proxy.Protocol,
+			User:   url.UserPassword(options.Proxy.Username, options.Proxy.Password),
+			Host:   fmt.Sprintf("%s:%s", options.Proxy.Host, options.Proxy.Port),
+		})
+		t.Proxy = proxy
+	}
+	sess.Transport = t
 
 	// Setup cookiejar
 	jar, err := cookiejar.New(nil)
@@ -96,6 +101,9 @@ func NewSession() *Session {
 		Timeout:   10 * time.Second,
 		Transport: t,
 		Jar:       jar,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
 	}
 
 	return sess
